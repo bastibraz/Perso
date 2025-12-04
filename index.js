@@ -59,6 +59,14 @@ client.on('messageCreate', async message => {
             const randomMessage = reponses[Math.floor(Math.random() * reponses.length)];
             await message.reply(randomMessage);
 
+            // ----------------------------
+            // Créer un sondage simulé avec réactions
+            // ----------------------------
+            const channel = message.channel; // ou un channel spécifique pour les sondages
+            const pollMessage = await channel.send(`Sondage : Que pensez-vous de cette plainte ?\n${plainte}`);
+            await pollMessage.react('✔️');
+            await pollMessage.react('❌');
+
         } catch (error) {
             console.error('Erreur lors de l’envoi de la plainte :', error);
             await message.reply("Une erreur est survenue, merci de réessayer plus tard.");
