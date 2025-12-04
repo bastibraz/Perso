@@ -1,3 +1,6 @@
+import fs from 'fs';
+const data = JSON.parse(fs.readFileSync('./reponses.json', 'utf8'));
+
 require('dotenv').config();
 const { Client, GatewayIntentBits, WebhookClient, PermissionsBitField } = require('discord.js');
 const fs = require('fs');
@@ -69,6 +72,16 @@ async function getPlaintesWebhook(guild) {
     return webhook;
 }
 
+function getRandomResponse(categorie) {
+    const categories = data.reponses;
+
+    // Si la catégorie n'existe pas → on prend "autre"
+    const list = categories[categorie] || categories["autre"];
+
+    // Sélection aléatoire
+    return list[Math.floor(Math.random() * list.length)];
+}
+
 client.on('ready', () => {
     console.log(`Bot connecté en tant que ${client.user.tag}`);
 });
@@ -100,14 +113,15 @@ client.on('messageCreate', async message => {
             });
 
             // Réponse aléatoire à l'utilisateur
-            const randomMessage = reponses[Math.floor(Math.random() * reponses.length)];
-            await message.reply(randomMessage);
+            const categoryResponses = responses[category];
+            const randomResponse = categoryResponses[Math.floor(Math.random() * categoryResponses.length)];
+            await message.reply(randomResponse);
 
             // ----------------------------
             // Créer le sondage via webhook
             // ----------------------------
             const pollMessage = await webhookClient.send({
-                content: `📊 **Sondage** : Que pensez-vous de cette plainte ?\n_${plainte}_`,
+                content: `📊 **Sondage** : Que pensez-vous de cette plainte ?`,
                 username: 'Sondage Bot',
                 wait: true
             });

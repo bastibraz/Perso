@@ -1,12 +1,34 @@
 {
-  "reponses": [
-    "Merci pour ta plainte, ça a été enregistré 💌",
-    "Plainté avec succès ! Courage 😌",
-    "On t’écoute, tu es entendu 👂",
-    "Ta plainte a été envoyée ! 💫",
-    "Message reçu ! Ne t’inquiète pas 😎",
-    "Plaintes transmises ! Merci pour ta patience 🙏",
-    "Ça fait du bien de se plaindre parfois 😅",
-    "T'en a pas marre de te plaindre, tu sais quoi... C'est totalement mérité alors maintenant ta gueule putain..."
-  ]
+  "reponses": {
+    "travail": [
+      "Ta plainte professionnelle est enregistrée ! Courage, le monde du travail est rude 💼😮‍💨",
+      "C’est noté ! Le travail, ça use tout le monde… toi un peu plus visiblement 😭",
+      "Message reçu ! On espère que ton patron ne verra pas ça 👀",
+      "Travail : plainte déposée. Peut-être que tu mérites une augmentation ? 🤑"
+    ],
+    "études": [
+      "Plaintes étudiantes enregistrées ! Accroche-toi, tu vas t’en sortir 📚💪",
+      "Études ajoutées à la liste des souffrances universelles ✏️😩",
+      "Message noté ! Respire, les exams vont pas te manger… enfin j’espère 😬",
+      "Ta plainte scolaire est envoyée. On te soutient psychologiquement (mais pas pour les devoirs) 😌"
+    ],
+    "personnel": [
+      "C’est enregistré ! Les histoires perso, c’est jamais simple ❤️‍🩹",
+      "Message pris en compte. Promis, ça reste entre nous 🤫",
+      "Ta plainte personnelle est envoyée ! Un câlin virtuel pour la route 🤗",
+      "Noté ! La vie personnelle, ça devrait venir avec un manuel d’utilisation 😵"
+    ],
+    "amour": [
+      "Plaintes sentimentales enregistrées 💘 Ça finira par s’arranger, promis !",
+      "Ton cœur parle, et moi j’écoute ❤️",
+      "Cœur brisé détecté 💔 On est ensemble dans cette galère.",
+      "Message sentimental reçu ! L’amour, c’est beaucoup trop compliqué… j’compatis 😩"
+    ],
+    "autre": [
+      "C’est noté ! Merci d’avoir partagé 😄",
+      "Plaintes diverses enregistrées ✨",
+      "Message envoyé dans la catégorie 'autre' ! On range ça où on peut 🗂️",
+      "Ok, ça part en catégorie fourre-tout 🧺"
+    ]
+  }
 }
