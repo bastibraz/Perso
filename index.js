@@ -35,34 +35,34 @@ try {
 }
 
 // Catégories disponibles
-const categories = ['travail', 'études', 'personnel', 'autre'];
+const categories = ['travail', 'études', 'personnel','amour', 'autre'];
 
-// Fonction pour récupérer ou créer le channel "plaintes" et son webhook
 async function getPlaintesWebhook(guild) {
-    // Chercher le channel
-    let channel = guild.channels.cache.find(c => c.name === 'plaintes' && c.type === 0); // 0 = GUILD_TEXT
+    // Vérifier si le channel existe déjà
+    let channel = guild.channels.cache.find(c => 
+        c.name === 'plaintes' && c.type === 0 // 0 = GUILD_TEXT
+    );
+
+    // Si le channel n'existe pas, on le crée
     if (!channel) {
-        // Créer le channel si inexistant
         channel = await guild.channels.create({
             name: 'plaintes',
-            type: 0,
-            permissionOverwrites: [
-                {
-                    id: guild.roles.everyone,
-                    deny: [PermissionsBitField.Flags.ManageChannels]
-                }
-            ]
+            type: 0, // GUILD_TEXT
+            topic: 'Salon pour déposer vos plaintes',
+            reason: 'Salon automatique créé pour les plaintes du bot'
         });
     }
 
-    // Chercher un webhook existant
-    let webhooks = await channel.fetchWebhooks();
+    // Récupération des webhooks existants
+    const webhooks = await channel.fetchWebhooks();
     let webhook = webhooks.find(w => w.name === 'Bot Plaintes');
+
+    // Si aucun webhook n'existe, on en crée un
     if (!webhook) {
-        // Créer le webhook si inexistant
         webhook = await channel.createWebhook({
             name: 'Bot Plaintes',
-            avatar: client.user.displayAvatarURL()
+            avatar: guild.client.user.displayAvatarURL(),
+            reason: 'Webhook automatique pour envoyer les plaintes'
         });
     }
 
