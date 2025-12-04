@@ -1,4 +1,3 @@
-import fs from 'fs';
 const data = JSON.parse(fs.readFileSync('./reponses.json', 'utf8'));
 
 require('dotenv').config();
