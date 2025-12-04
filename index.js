@@ -11,6 +11,19 @@ const client = new Client({
     ]
 });
 
+//Création d'un port pour dodge le web service render
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Bot is running!');
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Fake webserver running on port ${PORT}`);
+});
+
 // Charger les réponses depuis le JSON
 const reponsesPath = path.join(__dirname, 'reponses.json');
 let reponses = [];
