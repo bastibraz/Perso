@@ -60,11 +60,18 @@ client.on('messageCreate', async message => {
             await message.reply(randomMessage);
 
             // ----------------------------
-            // Créer un sondage simulé avec réactions
+            // Création du sondage via webhook
             // ----------------------------
-            const channel = message.channel; // ou un channel spécifique pour les sondages
-            const pollMessage = await channel.send(`Sondage : Que pensez-vous de cette plainte ?\n${plainte}`);
-            await pollMessage.react('✔️');
+            const pollMessage = await webhookClient.send({
+                content: `📊 **Sondage** : Que pensez-vous de cette plainte ?\n_${plainte}_`,
+                username: 'Sondage Bot'
+            });
+
+            // Ajouter réactions pour voter
+            // Note : Pour ajouter les réactions, il faut récupérer le message dans le client Discord
+            const channel = message.channel;
+            const msg = await channel.messages.fetch(pollMessage.id);
+            await pollMessage.react('✅');
             await pollMessage.react('❌');
 
         } catch (error) {
